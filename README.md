@@ -2,10 +2,6 @@
 
 Who makes the NBA All-Star team? Stats alone don't decide it: starters are chosen by fans (50%), players (25%) and media (25%). We built a hybrid model that mirrors that vote, blending on-court performance with online popularity and media sentiment, and used it to predict the 2026 All-Star roster.
 
-![Title slide](assets/cover.png)
-
-**Team:** Evelyn Ling, Ian Lin, Isaac Lei, Kai-Ying Chen, Millie You, Wharton Lin. Data 144 final project, Fall 2025.
-
 ## Results
 
 We trained on the 2020–2023 All-Star selections and held out the **2024 All-Star Game** (2023–24 season) as an unseen test year.
