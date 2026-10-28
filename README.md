@@ -54,6 +54,17 @@ Final = α · Model 1 + (1 − α) · [ β · ESPN sentiment + (1 − β) · Goo
 
 A grid search picked **α = 0.78** and **β = 0**. Performance carries most of the weight, and Google Trends popularity predicted selections better than ESPN sentiment did.
 
+### Why β = 0 is a finding, not a dead end
+
+The grid search gave ESPN sentiment zero weight. That doesn't mean sentiment is irrelevant to All-Star voting: fans cast half the vote, and how they feel about a player clearly shapes it. It means the sentiment data we could actually collect wasn't rich enough to add anything beyond Google Trends. Working out why was one of the most useful parts of the project:
+
+- **The best sentiment data is hard to reach.** Fan opinion lives on Reddit and X. Our Reddit developer application was rejected, and X search couldn't reach posts from before Nov 20, 2025. That left us with no social posts at all for the seasons we trained on.
+- **That's by design.** Large platforms limit scraping and set strict terms on how their users' posts can be used. Those privacy protections are the right call, but they mean that modeling public opinion is limited by data access before it's limited by modeling technique.
+- **What we could collect was thin.** We used ESPN analysis articles from the Google Custom Search API, about 10 per player per season. That measures how journalists write about a player, not how fans feel, and 10 headlines is a small sample.
+- **So popularity beat sentiment.** Google Trends data is public, daily and covers every player, which made it the stronger proxy for fan attention.
+
+The sentiment pipeline (scraper, NLTK scoring and volume weighting) is built and wired into the final score. With a richer, properly licensed source of fan posts, rerunning the grid search would show how much sentiment adds on its own.
+
 ## Repository layout
 
 ```
@@ -80,6 +91,6 @@ The ESPN scraper reads a Google Custom Search API key from the `GOOGLE_API_KEY` 
 
 ## Limitations and next steps
 
-- Our Reddit API application was rejected, and X (Twitter) search couldn't reach posts from before Nov 20, 2025. So fan interest comes from Google Trends rather than social posts.
+- Sentiment comes from ESPN headlines rather than fan posts, because of the data-access limits described above.
 - The 2024–25 season was skipped because its data format didn't match the other seasons.
 - Next steps: gradient-boosted models (XGBoost, LightGBM), probability calibration, transformer-based sentiment, social-media engagement data, and a look at where fan popularity and performance disagree (underrated vs. overhyped players).
