@@ -4,7 +4,7 @@ Who makes the NBA All-Star team? Stats alone don't decide it: starters are chose
 
 ## Results
 
-We trained on the 2020–2023 All-Star selections and held out the **2024 All-Star Game** (2023–24 season) as an unseen test year.
+I trained on the 2020–2023 All-Star selections and held out the **2024 All-Star Game** (2023–24 season) as an unseen test year.
 
 | Model | Precision | Recall |
 |---|---|---|
